@@ -1,0 +1,64 @@
+<html lang="en">
+
+    <%- include('layouts/header') %>
+
+<body>
+
+    <%- include('layouts/navbar') %>
+
+
+
+    <% if(errors=="Notfound" ) { %>
+        <script>
+                        Swal.fire({
+                icon: 'error',
+                title: 'มีบางอย่างผิดพลาด...',
+                text: 'โปรดลองใหม่!'
+            })
+        </script>
+    <% } %>
+
+    <% if(errors=="error") { %>
+
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'ชื่อหรือรหัสผ่านผิด...',
+                text: 'โปรดลองใหม่!'
+            })
+
+        </script>
+    <% } %>
+
+
+    <div class="container animate__animated animate__bounceIn" style="margin-top: 90px;">
+        <center>
+            <div class="card col-12 col-md-6 col-lg-4">
+                <div class="card-body shadow border border-info">
+                    <h3 class="card-title text-dark text-start">
+                        <i class="fad fa-sign-in mt-2"></i>  Login 
+                    </h3>
+                  
+                    <form action="/user/login" method="POST" class="mt-3">
+                        <!-- username -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text border-secondary" id="basic-addon1"><i class="fad fa-user"></i></span>
+                            <input type="text" class="form-control border-secondary" name="username" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
+                          </div>
+                        <!-- password -->
+                          <div class="input-group mb-3 ">
+                            <span class="input-group-text border-secondary" id="basic-addon1"><i class="fad fa-key" style="font-size: 14px;"></i></span>
+                            <input type="password" name="password" class="form-control border-secondary" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" required></input>
+                          </div>
+
+                          <button type="submit" class="btn btn-success"><i class="fad fa-lock-open-alt"></i>  Login</button>
+                    </form>
+
+                </div>
+            </div>
+        </center>
+    </div>
+
+</body>
+
+</html>

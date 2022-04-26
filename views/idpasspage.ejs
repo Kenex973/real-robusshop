@@ -1,0 +1,55 @@
+<html lang="en">
+
+<%- include('layouts/header') %>
+
+    <body>
+
+        <%- include('layouts/navbar') %>
+
+                            <div class="container animate__animated animate__bounceIn" style="margin-top: 90px;">
+                                <center>
+                                    <div class="card col-12 col-md-12 col-lg-12">
+                                        <div class="card-body shadow border border-info">
+                                            <h3 class="card-title text-dark text-start">
+                                                <i class="fad fa-store"></i> ยืนยันการสั่งซื้อ <%= getproductid.name %>
+                                            </h3>
+
+                                            <h4 class=" fw-light card-title text-dark text-start mt-4 mb-2">
+                                                <i class="fas fa-dollar-sign"></i> ราคา <%= getproductid.price %> บาท
+                                            </h4>
+
+                                            <h5 class="card-title text-danger text-start mt-4 mb-4">
+                                                ** ก่อนเติมกรุณาทำ <a href="https://www.youtube.com/watch?v=QqnfNrXhioY">เมลแดง</a> และปลดพิน ก่อนเติมทุกครั้ง  **
+                                            </h5>
+
+                                            <form action="/buy/idpass/<%= getproductid._id %>" method="POST" class="mt-3">
+                                                <!-- username -->
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text border-secondary" id="basic-addon1"><i
+                                                            class="fad fa-user"></i></span>
+                                                    <input type="text" class="form-control border-secondary"
+                                                        name="username" placeholder="Username" aria-label="Username"
+                                                        aria-describedby="basic-addon1" required>
+                                                </div>
+                                                <!-- password -->
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text border-secondary" id="basic-addon1"><i
+                                                            class="fad fa-key" style="font-size: 14px;"></i></span>
+                                                    <input type="password" name="password"
+                                                        class="form-control border-secondary" placeholder="Password"
+                                                        aria-label="Username" aria-describedby="basic-addon1">
+                                                </div>
+                                                  
+
+                                                <div class="g-recaptcha" data-sitekey="6Ldph3gfAAAAAJkfz4Odk4gQCA9LKgcWO1EggA1l"></div>
+                                                    <button type="submit" class="btn btn-success g-recaptcha mt-3"><i class="fal fa-shopping-cart"></i>
+                                                        ยืนยันซื้อสินค้า</button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </center>
+                            </div>
+    </body>
+
+</html>

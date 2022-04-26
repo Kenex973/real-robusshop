@@ -1,0 +1,63 @@
+<html lang="en">
+
+    <%- include('layouts/header') %>
+
+<body>
+
+    <%- include('layouts/navbar') %>
+
+
+    <div class="container mb-5">
+        <h1 style="margin-top: 500px;" class="text-dark text-center mt-5 mb-1 animate__animated animate__bounceIn" > </h1>
+
+
+        <!-- card start -->
+        <div class="row animate__animated animate__bounceIn">
+
+            <!-- loop get product here -->
+           
+            <center>
+                <div class="col-4 col-md-4 col-lg-4 mt-3 mb-3">
+                    <div class="card border shadow text-dark grow">
+                        <form action="/config/web" method="POST" class="mt-3">
+
+                            <div class="input-group mb-3">
+
+                                <input type="text" class="form-control border-secondary" name="name"
+                                    placeholder="ชื่อเว็ปไซต์ใหม่ (เดิม <%= webop.name %>)" aria-label="ชื่อการ์ดใหม่" aria-describedby="basic-addon1"
+                                    required>
+                            </div>
+
+                            <div class="input-group mb-3">
+
+                                <input type="text" class="form-control border-secondary" name="desc"
+                                    placeholder="คำอธิบายเว็ปใหม่  (เดิม <%= webop.desc %>)" aria-label="คำอธิบายการ์ด" aria-describedby="basic-addon1"
+                                    required>
+                            </div>
+
+                            <div class="input-group mb-3 ">
+                                <input type="text" name="logo" class="form-control border-secondary"
+                                    placeholder="ใส่ลิงค์โลโก้ร้าน" aria-label="tel" aria-describedby="basic-addon1"
+                                    required></input>
+                            </div>
+                            
+                            <div class="input-group mb-3 ">
+                                <input type="text" name="tel" class="form-control border-secondary"
+                                    placeholder="เบอร์ร้าน (เดิม <%= webop.tel %>)" aria-label="tel" aria-describedby="basic-addon1"
+                                    required></input>
+                            </div>
+
+                            <button type="submit" class="btn btn-success"><i class="fad fa-lock-open-alt"></i>
+                                แก้ไขเว็ป</button>
+                        </form>
+                    </div>
+                </div> 
+            </center>
+
+
+        <!-- card end -->
+        </div>
+
+</body>
+
+</html>

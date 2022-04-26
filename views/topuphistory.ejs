@@ -1,0 +1,76 @@
+<html lang="en">
+
+    <%- include('layouts/header') %>
+
+<body>
+
+    <%- include('layouts/navbar') %>
+   
+    <div class="container pt-5">
+        <center>
+            <h3 class="text-dark mt-5 mb-3">ประวัติการซื้อสินค้า</h3>
+        </center>
+
+        <table class="table mt-5 table-striped ">
+            <thead>
+              <tr class="bg-warning text-center">
+                <th scope="col">ลำดับ</th>
+                <th scope="col">จำนวนเงิน</th>
+                <th scope="col">วันที่</th>
+                <th scope="col">ชื่อสินค้า</th>
+                <th scope="col">ไอดี</th>
+                <th scope="col">พาสเวิร์ด</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(let i = 0; i < buyhis.length; i++) { %>
+              <tr class="text-center">
+                <td><h4  class="mt-2"><%= i+1 %></h4></td>
+                <td><h4  class="mt-2"><%= buyhis[i].amount%> </h4></td>
+                <td><h4  class="mt-2"><%= buyhis[i].date%> </h4></td>
+                <td><h4  class="mt-2"><%= buyhis[i].productname%></h4></td>
+                <td><h4  class="mt-2"><%= buyhis[i].id%></h4></td>
+                <td><h4  class="mt-2"><%= buyhis[i].pass%></h4></td>
+              </tr>
+            <% } %>
+            </tbody>
+          </table>
+    </div>
+
+    <div class="container pt-5">
+        <center>
+            <h3 class="text-dark mt-5 mb-3">ประวัติการเติมเงิน</h3>
+        </center>
+
+        <table class="table mt-5 table-striped ">
+            <thead>
+              <tr class="bg-success text-center">
+                <th scope="col">ลำดับ</th>
+                <th scope="col">จำนวนเงิน</th>
+                <th scope="col">วันที่</th>
+                <th scope="col">ลิงค์</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(let i = 0; i < listhis.length; i++) { %>
+              <tr class="text-center">
+                <td><h4  class="mt-2"><%= i+1 %></h4></td>
+                <td><h4  class="mt-2"><%= listhis[i].amount%> </h4></td>
+                <td><h4  class="mt-2"><%= listhis[i].date%> </h4></td>
+                <td><h4  class="mt-2"><%= listhis[i].link%></h4></td>
+              </tr>
+            <% } %>
+            </tbody>
+          </table>
+    </div>
+
+
+
+
+
+        
+   
+
+</body>
+
+</html>

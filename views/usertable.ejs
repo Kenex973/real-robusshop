@@ -1,0 +1,93 @@
+<html lang="en">
+
+    <%- include('layouts/header') %>
+
+<body>
+
+    <%- include('layouts/navbar') %>
+   
+    <div class="container pt-5">
+        <table class="table mt-5 table-striped ">
+            <thead>
+              <tr class="bg-success text-center">
+                <th scope="col">ลำดับ</th>
+                <th scope="col">ชื่อผู้ใช้</th>
+                <th scope="col">จำนวนพ้อยท์</th>
+                <th scope="col">แรงค์</th>
+                <th scope="col">ไอดีผู้ใช้</th>
+                <th>จัดการผู้ใช้</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(let i = 0; i < listuser.length; i++) { %>
+              <tr class="text-center">
+                <td><h4  class="mt-2"><%= i+1 %></h4></td>
+                <td><h4  class="mt-2"><%= listuser[i].username%> </h4></td>
+                <td><h4  class="mt-2"><%= listuser[i].point%></h4></td>
+                <td><h4  class="mt-2"><%= listuser[i].rank%></h4></td>
+                <td><h4  class="mt-2"><%= listuser[i]._id%></h4></td>
+                <td class="mt-2"><a href="/user/config/<%=  listuser[i]._id  %>" type="submit" class="btn btn-warning" style="padding-left: 15px; padding-right: 15px;"><i class="fad fa-lock-open-alt"></i>  แก้ไข</a></td>
+              </tr>
+            <% } %>
+            </tbody>
+          </table>
+    </div>
+
+
+
+
+
+        
+    <center>
+      <div class="container">
+          <div class="d-grid gap-2" data-bs-toggle="modal" data-bs-target="#exampleModasl" style="margin-top :100px;">
+              <a href="#" class="btn btn-outline-secondary shadow grow"><i class="far fa-shopping-cart"></i>
+                  เพิ่มการ์ด....</a>
+          </div>
+      </div>
+  </center>
+  
+  
+  <div class="modal fade" id="exampleModasl" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-dark">
+              <form action="/products/add" method="POST">
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">ชื่อการ์ด</label>
+                    <input type="text" class="form-control" id="name" name="name" >
+                  </div>
+                  <div class="mb-3">
+                    <label for="text" class="form-label">รายละเอียด</label>
+                    <input type="text" class="form-control" id="desc" name="desc">
+                  </div>
+                  <div class="mb-3">
+                    <label for="text" class="form-label">โค๊ดสินค้า</label>
+                    <input type="text" class="form-control" id="code" name="code">
+                  </div>
+                  <div class="mb-3">
+                      <label for="price" class="form-label">ราคา</label>
+                      <input type="number" class="form-control" id="price" name="price">
+                    </div>
+                  <div class="mb-3 form-check">
+                      <label for="price" class="form-label">ลิงค์รูปภาพ</label>
+                      <input type="text" class="form-control" id="link" name="img">
+                    
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ยกเลิก</button>
+                      <button type="submit" class="btn btn-primary">เพิ่มสินค้า</button>
+                    </div>
+                </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+
+</html>

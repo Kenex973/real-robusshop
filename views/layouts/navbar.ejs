@@ -1,0 +1,95 @@
+<div class="container ">
+    <nav class="navbar navbar-expand-lg navbar-light bg-micah fixed-top shadow">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="padding-left:15; padding-right:15;" href="/">  <%= webop.name %></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/"><i class="fas fa-home-lg"></i> หน้าหลัก</a>
+                    </li>
+                    
+                    <% if (username){ %>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/topup"><i class="fas fa-coin-lg"></i><i class="fas fa-coins"></i> เติมเงิน</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-coin-lg"></i><i class="fas fa-coins"></i<i class="far fa-coin"></i> <%= user.point%> พ้อยท์</a>
+                        </li>
+                    <% } %>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/idpass"><i class="fas fa-lock"></i> ID-PASS</a>
+                    </li>
+                    
+
+                </ul>
+               
+
+                <% if (username){ %>
+                    <ul class="nav navbar-nav d-flex" style="padding-left:15px; padding-right:15px;">
+                        <% if(user.rank == "owner") { %>
+                        
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/admin"></i> <i class="far fa-tools"></i> จัดการระบบ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/addidpass"></i> <i class="far fa-tools"></i> จัดการ ID-PASS</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/admin/his"></i> <i class="fas fa-list"></i> รายการการเติมเงินทั้งหมด</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/listuser"></i> <i class="fas fa-user-friends"></i> แก้ไขผู้ใช้ทั้งหมด</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/config"></i> <i class="fad fa-hammer"></i> จัดการหน้าเว็ป</a>
+                            </li>
+                        <% } %>
+                        <li class="nav-item">
+                            <a class="nav-link active  " aria-current="page" href="/topup/history">
+                                <i class="fas fa-user"></i> <%= username%>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active  text-dark" aria-current="page"
+                                onclick="logout()"><i class="far fa-sign-out"></i> ออกจากระบบ</a>
+                        </li>
+
+                        <script>
+                            function logout() {
+                                Swal.fire({
+                                    title: 'ต้องการจะออกจากระบบ?',
+                                    text: "",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'ใช่'
+                                }).then((result) => {
+
+                                    if (result.isConfirmed) {
+                                        Swal.fire(
+                                            'ออกจากระบบสำเร็จ!',
+                                            '..',
+                                            'success'
+                                        ).then(()=>{
+                                            window.location = '/user/logout'
+                                        })
+                                    }
+                                })
+                            }
+                        </script>
+
+                    </ul>
+                    <% } %>
+            </div>
+        </div>
+    </nav>
+</div>

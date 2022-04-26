@@ -1,0 +1,45 @@
+<html lang="en">
+
+    <%- include('layouts/header') %>
+
+<body>
+
+    <%- include('layouts/navbar') %>
+   
+    <div class="container">
+
+      <h3 class="text-dark text-center animate__animated animate__bounceIn"
+          style="margin-top: 50px; margin-bottom:0px">ค้นหาคิวในอดีต</h3>
+
+      <table class="table table-striped mb-5 mt-2 table-dark">
+          <thead >
+              <tr class="bg-warning">
+                  <th scope="col">ลำดับ</th>
+                  <th scope="col">ชื่อไอดี</th>
+                  <th scope="col">ผู้ซื้อ</th>
+                  <th scope="col">สินค้า</th>
+                  <th scope="col">สถานะคิว</th>
+              </tr>
+          </thead>
+          <tbody>
+              <% for(let i=0; i < q.length; i++) { %>
+                  <tr>
+                      <th scope="row"><%= i+1 %></th>
+                      <td><%= q[i].id %></td>
+                      <td><%= q[i].user %></td>
+                      <td><%= q[i].product %></td>
+                      <% if(q[i].status === "รอดำเนินการ") { %>
+                          <td class="text-warning"><i class="fal fa-stopwatch"></i> กำลังดำเนินการ</td>
+                      <% }else if(q[i].status === "สำเร็จ") { %>
+                          <td class="text-success"><i class="fas fa-check"></i> ดำเนินการสำเร็จ</td>
+                      <% }else if(q[i].status === "ดำเนินการไม่สำเร็จ คืนเงินแล้ว") { %>
+                          <td class="text-danger"><i class="far fa-ban"></i> ดำเนินการไม่สำเร็จ คืนเงินแล้ว</td>    
+                      <% } %>
+                  </tr>
+              <% } %>
+          </tbody>
+      </table>
+  </div>
+</body>
+
+</html>

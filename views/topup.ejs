@@ -1,0 +1,63 @@
+<html lang="en">
+
+<%- include('layouts/header') %>
+
+    <body>
+
+        <%- include('layouts/navbar') %>
+
+
+
+            <% if(topups=="no" ) { %>
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'ซองอั่งเปาไม่ถูกต้อง...',
+                        text: 'โปรดลองใหม่!'
+                    })
+                </script>
+                <% }else if(topups=="yes" ) { %>{ %>
+                    <script>
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'เติมเงินสำเร็จ...',
+                            text: 'เติมเป็นเงินจำนวน <%= amounts %> บาท!'
+                        })
+                    </script>
+
+                <% } %>
+                    <div class="container mb-3 " style="margin-top: 100px;">
+                        <div class="row animate__animated animate__bounceIn">
+                            <div class="col-12 col-md-12 col-lg-12 mt-2 mb-3 grow">
+                                <div class="card shadow border border-info">
+                                    <center class="text-dark mt-5">
+                                        <h4>วิธีสร้างซองอั่งเปา</h4>
+                                    </center>
+                                    <div class="card-body text-center text-dark text rounded-2">
+                                        <img src="https://www.checkraka.com/uploaded/img/content/130026/aungpao_truewallet_01.jpg"
+                                            width=70% alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <form action="/user/topup" method="POST">
+                            <div class="col-12 col-md-12 col-lg-12 mt-2 mb-3 grow"></div>
+                            <div class="form-group text-dark">
+                                <label for="exampleFormControlInput1">กรอกซองของขวัญ</label>
+                                <input type="text" name="link" class="form-control" id="exampleFormControlInput1"
+                                    placeholder="ซองของขวัญ">
+                                    <center>
+                                        <button type="submit" class="btn btn-success mt-3"><i class="fas fa-coins"></i>
+                                        เติมเงิน</button>
+                                    </center>
+                            </div>
+                    </div>
+                    </form>
+                    </div>
+
+
+    </body>
+
+</html>

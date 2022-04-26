@@ -1,0 +1,134 @@
+<html lang="en">
+
+    <%- include('layouts/header') %>
+
+<body>
+
+    <%- include('layouts/navbar') %>
+
+    <center>
+        <div class="card border-0 text-dark bg-micah rounded-0">
+            <div class="card-body h1" style="margin-top: 60px;margin-bottom: 30px;">
+                <div cl4ss="text-center fw-bold animate__animated animate__bounceIn">
+                    <%= webop.name %>
+                    <p class="mt-3 h5 fw-light animate__animated animate__bounceIn"><%= webop.desc %></p>
+                    
+                        <% if (loggedIn) {%>
+                    
+                    
+                    <% } else {%>
+                        <div class="row mt-4 justify-content-center">
+                            <div class="col-6 col-md-4 col-lg-2 text-end">
+        
+                                <a href="/login" type="button" class="btn btn-secondary grow shadow"><i
+                                        class="fad fa-sign-in"></i> Login</a>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-2  text-start">
+                                <a href="/register" type="button" class="btn btn-success grow shadow"><i
+                                        class="fad fa-user-plus"></i> Register</a>
+                            </div>
+                        </div>
+                        <% } %>
+
+                </div>
+    
+            </div>
+        </div>
+    </center>
+
+    <div class="container mb-5 mt-5 lt-5">
+        <div class="row animate__animated animate__bounceIn">
+            <div class="col-12 col-md-6 col-lg-4 mt-2 mb-3 grow">
+                <div class="card shadow border border-micah">
+                    <div class="card-body text-center text-dark text rounded-2">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+                            width="151" alt="">
+                            <h5><%= listuser.length %></h5>
+                        <h5>ผู้ใช้ทั้งหมด</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mt-2 mb-3 grow">
+                <div class="card shadow border border-micah">
+                    <div class="card-body text-center text-dark text rounded-2">
+                        <img src="http://cdn.onlinewebfonts.com/svg/img_123632.png"
+                            width="151" alt="">
+                        <h5> <%= idpasslist.length %></h5>
+                        <h5>จำนวนสินค้าแบบ ID-PASS</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mt-2 mb-3 grow">
+                <div class="card shadow border border-micah">
+                    <div class="card-body text-center text-dark text rounded-2">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Font_Awesome_5_solid_box-open.svg/1279px-Font_Awesome_5_solid_box-open.svg.png"
+                            width="188" alt="">
+                        <h5><%= getProduct.length %></h5>
+                        <h5>รายการสินค้า</h5>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <h1 class="text-dark text-center mt-5 mb-3 animate__animated animate__bounceIn">รายการสินค้า</h1>
+
+
+        <!-- card start -->
+        <div class="row animate__animated animate__bounceIn">
+
+            <!-- loop get product here -->
+            <% for(let i = 0; i < getProduct.length; i++) { %>
+            <div class="col-12 col-md-6 col-lg-4 mt-2 mb-3">
+                <div class="card border shadow text-dark grow">
+                    <img src=<%= getProduct[i].img %>
+                        class="card-img-top" alt="..." style="width: 100%;">
+                    <div class="card-body">
+                        <h5 class="card-title h4"><%= getProduct[i].name %></h5>
+                        <p class="card-text h6"><%= getProduct[i].desc %></p>
+                        <p class="fw-lighter h6">ราคา <%= getProduct[i].price %> บาท</p>
+                        <p class="card-text h6">เหลือสินค้า <%= getProduct[i].stock.length %> ชิ้นในระบบ</p>
+                        <div class="d-grid gap-2">
+                            <% if(getProduct[i].stock.length > 0) { %>
+                                <a href="/buy/<%= getProduct[i]._id %>"  class="btn btn-success shadow"><i class="far fa-shopping-cart"></i> ซื้อสินค้า</a>
+                            <% }else { %>
+                                <a href="/"  class="btn btn-danger shadow"><i class="far fa-box-open"></i> สินค้าหมด</a>
+                            <% } %>
+                        </div>
+
+                    </div>
+                </div>
+            </div> 
+            <% } %>
+
+
+        <!-- card end -->
+        </div>
+
+        <div class="row animate__animated animate__bounceIn" style="margin-top: 50px">
+            <h1 class="text-dark text-center mt-5 mb-3 animate__animated animate__bounceIn">รายการสินค้าเพิ่มเติม</h1>
+            <!-- loop get product here -->
+            
+            <div class="col-6 mt-2 mb-3 rounded">
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="card border shadow text-dark grow">
+                    <img src="https://scontent.furt2-1.fna.fbcdn.net/v/t39.30808-6/262700044_876570593042683_1032594705648376987_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=e3f864&_nc_ohc=W903lEPv1dkAX8odRhc&_nc_ht=scontent.furt2-1.fna&oh=00_AT-97JZzfGKS9fu8Zk5Aixo3KY0CXHp4GGYOu5Fj15IFyw&oe=626D48BC"
+                        class="card-img-top" alt="..." style="width: 100%;">
+                </a>
+            </div>
+            <div class="col-6 mt-2 mb-3 rounded">
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="card border shadow text-dark grow">
+                    <img src="https://scontent.furt2-1.fna.fbcdn.net/v/t39.30808-6/241098052_215328757233700_4490495241626203792_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=e3f864&_nc_ohc=uVS1HoEXK5EAX83USsA&_nc_ht=scontent.furt2-1.fna&oh=00_AT_nyh6a9qpZjoVzD8XKD2te3IkZ8wSKKWusloAuiGOvpw&oe=626BD5E9"
+                        class="card-img-top" alt="..." style="width: 100%;">
+                </a>
+            </div>
+
+        <!-- card end -->
+        </div>
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<html lang="en">
+
+<%- include('layouts/header') %>
+
+    <body>
+
+        <%- include('layouts/navbar') %>
+
+            <div class="container mb-5">
+                <h1 class="text-dark text-center animate__animated animate__bounceIn"
+                    style="margin-top: 100px; margin-bottom:100px">รายการสินค้า id-pass</h1>
+
+
+                <!-- card start -->
+                <div class="row animate__animated animate__bounceIn">
+
+                    <!-- loop get product here -->
+                    <% for(let i=0; i < idpasslist.length; i++) { %>
+                        <div class="col-12 col-md-6 col-lg-4 mt-2 mb-3">
+                            <div class="card border shadow text-dark grow">
+                                <img src=<%=idpasslist[i].img %>
+                                class="card-img-top" alt="..." style="width: 100%;">
+                                <div class="card-body">
+                                    <h5 class="card-title h4">
+                                        <%= idpasslist[i].name %>
+                                    </h5>
+                                    <p class="fw-lighter h6">ราคา <%= idpasslist[i].price %> บาท</p>
+                                    <div class="d-grid gap-2">
+                                        <a href="/select/idpass/<%= idpasslist[i]._id %>"
+                                            class="btn btn-success shadow"><i class="far fa-shopping-cart"></i>
+                                            ซื้อสินค้า</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+
+
+                            <!-- card end -->
+                </div>
+
+
+
+
+            </div>
+
+            <div class="container">
+
+                <h3 class="text-dark text-center animate__animated animate__bounceIn"
+                    style="margin-top: 50px; margin-bottom:0px">คิวไอดีพาสของคุณ</h3>
+
+                <table class="table table-striped mb-5 mt-2 table-dark">
+                    <thead >
+                        <tr class="bg-warning">
+                            <th scope="col">ลำดับ</th>
+                            <th scope="col">ชื่อไอดี</th>
+                            <th scope="col">สินค้า</th>
+                            <th scope="col">สถานะคิว</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <% for(let i=0; i < q.length; i++) { %>
+                            <tr>
+                                <th scope="row"><%= i+1 %></th>
+                                <td><%= q[i].id %></td>
+                                <td><%= q[i].product %></td>
+                                <% if(q[i].status === "รอดำเนินการ") { %>
+                                    <td class="text-warning"><i class="fal fa-stopwatch"></i> กำลังดำเนินการ</td>
+                                <% }else if(q[i].status === "สำเร็จ") { %>
+                                    <td class="text-success"><i class="fas fa-check"></i> ดำเนินการสำเร็จ</td>
+                                <% }else if(q[i].status === "ดำเนินการไม่สำเร็จ คืนเงินแล้ว") { %>
+                                    <td class="text-danger"><i class="far fa-ban"></i> ดำเนินการไม่สำเร็จ คืนเงินแล้ว</td>    
+                                <% } %>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+
+    </body>
+
+</html>

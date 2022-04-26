@@ -1,0 +1,94 @@
+<html lang="en">
+
+<%- include('layouts/header') %>
+
+    <body>
+
+
+
+
+
+
+
+
+        <div class="container animate__animated animate__bounceIn" style="margin-top: 90px;">
+            <center>
+                <div class="card col-12 col-md-6 col-lg-4">
+                    <div class="card-body shadow border border-info">
+                        <h3 class="card-title text-dark text-start">
+                            <i class="fad fa-tool mt-2"></i>เพิ่มสต็อกสินค้า
+                        </h3>
+                        <h5 class="card-title text-dark text-start">ชื่อการ์ด <%= getProduct.name %>
+                        </h5>
+                        <form action="/add/stock/<%= cardid %>" method="POST" class="mt-3">
+
+                            <div class="input-group mb-3">
+
+                                <input type="text" class="form-control border-secondary" name="username"
+                                    placeholder="ชื่อไอดี" aria-label="ชื่อการ์ดใหม่" aria-describedby="basic-addon1"
+                                    required>
+                            </div>
+
+                            <div class="input-group mb-3">
+
+                                <input type="text" class="form-control border-secondary" name="password" placeholder="รหัสผ่าน หรือ โค๊ด" aria-label="คำอธิบายการ์ด" aria-describedby="basic-addon1"
+                                    required>
+                            </div>
+
+
+                            <button type="submit" class="btn btn-success"><i class="fad fa-lock-open-alt"></i>
+                                เพิ่มสต็อกสินค้า</button>
+                        </form>
+                    </div>
+                </div>
+            </center>
+        </div>
+
+        <html lang="en">
+
+    <%- include('layouts/header') %>
+
+<body>
+
+    <%- include('layouts/navbar') %>
+   
+    <div class="container pt-5">
+        <table class="table mt-5 table-striped ">
+            <thead>
+              <tr class="bg-success text-center">
+                <th scope="col">ลำดับ</th>
+                <th scope="col">ชื่อไอดี</th>
+                <th scope="col">รหัสผ่านไอดี</th>
+                <th scope="col">จัดการไอดี</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(let i = 0; i < getProduct.stock.length; i++) { %>
+              <tr class="text-center">
+                <td><h4  class="mt-2"><%= i+1 %></h4></td>
+                <td><h4  class="mt-2"><%= getProduct.stock[i].username%> </h4></td>
+                <td><h4  class="mt-2"><%= getProduct.stock[i].password%></h4></td>
+                <td class="mt-2"><a href="/delete/<%= getProduct._id  %>/<%= i  %>" type="submit" class="btn btn-danger" style="padding-left: 15px; padding-right: 15px;">    <i class="fas fa-trash-alt"></i>  ลบสินค้า</a></td>
+              </tr>
+            <% } %>
+            </tbody>
+          </table>
+    </div>
+
+
+
+
+
+        
+   
+  
+  
+
+</body>
+
+</html>
+
+
+    </body>
+
+</html>
